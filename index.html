@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="./public/css/style.css">
+	<title>JScript Drum Kit</title>
+</head>
+<body>
+	<main>
+		<section>
+			<div class="img_bground"></div>
+			
+			<div class="keys">
+				<div data-key="65" class="key">
+					<kbd>A</kbd>
+					<span class="sound">Snare</span>
+				</div>
+				<div data-key="83" class="key">
+					<kbd>S</kbd>
+					<span class="sound">Tom</span>
+				</div>
+				<div data-key="68" class="key">
+					<kbd>D</kbd>
+					<span class="sound">Clap</span>
+				</div>
+				<div data-key="70" class="key">
+					<kbd>F</kbd>
+					<span class="sound">Ride</span>
+				</div>
+				<div data-key="74" class="key">
+					<kbd>J</kbd>
+					<span class="sound">Kick</span>
+				</div>
+				<div data-key="75" class="key">
+					<kbd>K</kbd>
+					<span class="sound">Crash</span>
+				</div>
+				<div data-key="76" class="key">
+					<kbd>L</kbd>
+					<span class="sound">Cymbals</span>
+				</div>
+				<div data-key="71" class="key">
+					<kbd>G</kbd>
+					<span class="sound">Close Hat</span>
+				</div>
+				<div data-key="72" class="key">
+					<kbd>H</kbd>
+					<span class="sound">Pedal Hat</span>
+				</div>
+				<div data-key="67" class="key">
+					<kbd>C</kbd>
+					<span class="sound">Open Hat</span>
+				</div>
+			</div>
+
+			<audio data-key="65" src="./public/asset/audio/ambient_snare.aif"></audio>
+			<audio data-key="83" src="./public/asset/audio/ambient_tom_2.aif"></audio>
+			<audio data-key="68" src="./public/asset/audio/clap.wav"></audio>
+			<audio data-key="70" src="./public/asset/audio/cleanride.aif"></audio>
+			<audio data-key="74" src="./public/asset/audio/gorgeous-kick.wav"></audio>
+			<audio data-key="75" src="./public/asset/audio/normcrash.aif"></audio>
+			<audio data-key="76" src="./public/asset/audio/open_cymbals.aif"></audio>
+			<audio data-key="71" src="./public/asset/audio/ordinary_closed_hh.aif"></audio>
+			<audio data-key="72" src="./public/asset/audio/pedal_hi_hat.aif"></audio>
+			<audio data-key="67" src="./public/asset/audio/wideopenhh.aif"></audio>
+
+			<div class="footer">
+				<span>Guide: JavaScript30 (#1)</span>
+				<span>For desktop use only</span>
+			</div>
+		</section>
+	</main>
+
+	<script type="text/javascript">
+
+		function playSound(e) {
+			const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+			const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
+			if (!audio) return; // stop the function from running 
+			audio.currentTime = 0; //rewind to the start
+			audio.play();
+
+			key.classList.add('playing');
+		}
+
+		const keys = document.querySelectorAll('.key');
+		keys.forEach(key => key.addEventListener("transitionend", removeTransition ));
+		
+		function removeTransition(e) {
+			// e.classList.remove('playing');
+			if (e.propertyName !== "transform") return; // stop it if it's not transform
+			this.classList.remove('playing');
+		}
+
+		window.addEventListener('keydown', playSound);
+	</script>
+
+</body>
+</html>

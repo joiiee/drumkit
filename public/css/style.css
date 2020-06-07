@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Gotu&display=swap');
+
+:root {
+	--font-keys: 'Gotu', sans-serif;
+}
+
+body {
+	font-family: var(--font-keys);
+	margin: initial;
+}
+
+.img_bground {
+	background-image: linear-gradient(
+		rgba(0,0,0,0.6),
+		rgba(0,0,0,0.6)
+		),
+		url('../asset/image/brad-stallcup-7Ueh8gYbsBc-unsplash.jpg');
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center center;
+	height: 100vh;
+	position: relative;
+}
+
+.keys {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	text-align: center;
+	transform: translate(-50%,-50%);
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.keys .key {
+	width: 3.8em;
+	height: 3.8em;
+	border: 2px solid black;
+	border-radius: 5px;
+	margin: 1.2em;
+	color: lightgray;
+	background:rgba(0,0,0,0.4);
+	padding: 8px;
+	text-shadow: 0 0 4px black;
+	transition: all 0.07s;
+}
+
+.key kbd {
+	display: block;
+	font-size: 30px;
+}
+
+.key .sound {
+	color: #5eab72;
+	font-size: 12px;
+	white-space: nowrap;
+	text-transform: uppercase;
+}
+
+.playing {
+	transform: scale(1.1);
+	border-color: #5eab72!important;
+	box-shadow: 0 0 10px #5eab72;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	text-align: center;
+}
+
+.footer span {
+	font-size: 12px;
+	color: darkslategray;
+	display: block;
+}
