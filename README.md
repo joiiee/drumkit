@@ -1,4 +1,4 @@
-# drumkit #1
+# #1 Drumkit 
 
 30 Day Vanilla JS Challenge
 
